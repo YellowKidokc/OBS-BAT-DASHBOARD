@@ -1,0 +1,180 @@
+version: 2
+name: constrained_yaml_projection_v2
+
+field_families:
+  identity:
+    required:
+      - id
+      - title
+      - entity_type
+    optional:
+      - summary
+      - canonical_slug
+
+  placement:
+    required:
+      - domain
+    optional:
+      - subdomain
+      - series
+      - project_id
+      - project_ids
+      - scale
+
+  claim:
+    optional:
+      - claim_type
+      - scope
+      - proof_status
+      - precision_level
+      - question_type
+
+  support:
+    optional:
+      - evidence_refs
+      - evidence_tier
+      - evidence_type
+      - sources
+      - replication_status
+
+  dependencies:
+    optional:
+      - depends_on
+      - axiom_dependencies
+      - law_dependencies
+      - assumptions
+      - boundary_conditions
+
+  consequences:
+    optional:
+      - enables
+      - implies
+      - predicts
+      - related_questions
+      - related_papers
+
+  falsification:
+    optional:
+      - falsification
+      - death_condition
+      - collapse_if_false
+
+enums:
+  entity_type:
+    - axiom
+    - question
+    - claim
+    - hypothesis
+    - result
+    - law
+    - evidence
+    - definition
+    - theory
+    - observation
+    - mechanism
+    - equation
+    - paper
+
+  domain:
+    - physics
+    - biology
+    - chemistry
+    - consciousness
+    - theology
+    - moral
+    - mathematics
+    - information
+    - philosophy
+    - meta
+
+  claim_type:
+    - descriptive
+    - causal
+    - ontological
+    - predictive
+    - mathematical
+    - mechanistic
+    - normative
+
+  proof_status:
+    - proven
+    - derived
+    - well_supported
+    - argued
+    - tentative
+    - open
+    - survived_adversary
+
+  question_type:
+    - type_1
+    - type_2
+    - type_3
+    - type_4
+
+  evidence_tier:
+    - tier_1
+    - tier_2
+    - tier_3
+
+  evidence_type:
+    - empirical
+    - experimental
+    - observational
+    - mathematical
+    - logical
+    - scriptural
+    - historical
+    - inferential
+
+  replication_status:
+    - replicated
+    - partial
+    - unreplicated
+    - not_applicable
+
+  death_condition:
+    - self_refutation
+    - infinite_regress
+    - empirical_contradiction
+    - logical_incoherence
+    - unsupported
+    - collapses_to_stronger_branch
+
+support_bands:
+  - explicit
+  - strong
+  - moderate
+  - weak
+  - none
+
+mode_rules:
+  strict:
+    min_support_band: strong
+    include_weak_candidates: false
+    fail_on_missing_required_identity: true
+    fail_on_missing_domain: true
+
+  assisted:
+    min_support_band: moderate
+    include_weak_candidates: false
+    fail_on_missing_required_identity: true
+    fail_on_missing_domain: false
+
+  discovery:
+    min_support_band: weak
+    include_weak_candidates: true
+    fail_on_missing_required_identity: false
+    fail_on_missing_domain: false
+
+audit_sections:
+  - summary
+  - kept
+  - removed
+  - ambiguous
+  - missing_but_expected
+  - graph_payload_summary
+
+emitted_sidecars:
+  - classification.json
+  - audit.md
+  - graph_payload.json

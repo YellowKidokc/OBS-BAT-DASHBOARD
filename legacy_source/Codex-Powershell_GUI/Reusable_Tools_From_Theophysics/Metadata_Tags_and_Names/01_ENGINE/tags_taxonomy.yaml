@@ -1,0 +1,325 @@
+All right. So that guy, maybe Mark may not have been Dale. I may have to give him the benefit of the doubt.# tags_taxonomy.yaml
+# SOURCE OF TRUTH for the Theophysics tag system.
+#
+# HOW TO EXTEND:
+#   Add a tag slug  → append it to any list below
+#   Add a category  → add a new key under an existing domain
+#   Add a domain    → add a new top-level key under `domains:`
+#   Add auto-detect → add the slug + keywords under `auto_detect:`
+#   Add images      → drop files in O:\00_MEDIA\Blue_Diagrams\ (auto-discovered)
+#
+# Tag slugs use kebab-case.  Keep them stable once assigned to papers.
+# ─────────────────────────────────────────────────────────────────────────────
+
+domains:
+
+  "Theology — God the Father":
+    "Core Attributes & Roles":
+      - god-the-father
+      - father-creator
+      - father-sovereignty
+      - father-providence
+      - father-judgment
+      - father-love
+      - father-transcendence
+      - father-immanence
+    "Theological Properties":
+      - father-omniscience
+      - father-omnipotence
+      - father-omnipresence
+      - father-eternity
+      - father-necessity
+    "Physics Connections":
+      - father-quantum-substrate
+      - father-initial-conditions
+      - father-logos-source
+      - father-field-equations
+      - father-natural-law
+
+  "Theology — Jesus the Son":
+    "Core Identity & Roles":
+      - jesus-the-son
+      - jesus-incarnation
+      - jesus-logos
+      - jesus-mediator
+      - jesus-redeemer
+      - jesus-resurrection
+      - jesus-ascension
+    "Christological Concepts":
+      - jesus-divine-nature
+      - jesus-human-nature
+      - jesus-hypostatic-union
+      - jesus-kenosis
+      - jesus-glorification
+    "Physics Connections":
+      - jesus-quantum-bridge
+      - jesus-observer-collapse
+      - jesus-information-embodied
+      - jesus-spacetime-entry
+      - jesus-grace-function
+      - jesus-entropy-reversal
+    "Ministry & Works":
+      - jesus-miracles
+      - jesus-teachings
+      - jesus-transfiguration
+      - jesus-crucifixion
+      - jesus-blood
+    "Prophecy Fulfillment":
+      - jesus-messianic-prophecy
+      - jesus-suffering-servant
+      - jesus-davidic-king
+      - jesus-second-coming
+
+  "Theology — Holy Spirit":
+    "Core Attributes & Roles":
+      - holy-spirit
+      - spirit-indwelling
+      - spirit-guide
+      - spirit-power
+      - spirit-sanctification
+      - spirit-unity
+      - spirit-gifts
+    "Physics Connections":
+      - spirit-quantum-field
+      - spirit-information-carrier
+      - spirit-consciousness-field
+      - spirit-entanglement
+      - spirit-coherence
+      - spirit-decoherence-prevention
+    "Work & Activity":
+      - spirit-conviction
+      - spirit-regeneration
+      - spirit-illumination
+      - spirit-intercession
+      - spirit-prophecy
+      - spirit-inspiration
+    "Pentecost & Experience":
+      - spirit-pentecost
+      - spirit-tongues
+      - spirit-baptism
+      - spirit-filling
+      - spirit-fruit
+
+  "Theology — Trinity":
+    "Trinitarian Theology":
+      - trinity
+      - trinity-unity
+      - trinity-diversity
+      - trinity-perichoresis
+      - trinity-relations
+      - trinity-inseparable-operations
+      - trinity-economy
+      - trinity-immanent
+    "Physics Models of Trinity":
+      - trinity-quantum-entanglement
+      - trinity-information-states
+      - trinity-field-trinity
+      - trinity-observer-observed-observation
+      - trinity-3D-spacetime
+      - trinity-relational-ontology
+    "Creation & Salvation":
+      - trinity-creation
+      - father-creates-through-son
+      - spirit-hovers-genesis
+      - trinity-sustains
+      - trinity-salvation
+      - father-sends-son
+      - son-redeems
+      - spirit-applies
+      - trinity-adoption
+
+  "Physics — Quantum Mechanics":
+    "Core QM":
+      - quantum-mechanics
+      - wave-function
+      - superposition
+      - quantum-field
+      - bra-ket-notation
+      - schrodinger-equation
+      - hamiltonian-operator
+      - density-matrix
+    "Measurement & Observation":
+      - observer-effect
+      - measurement-problem
+      - observer-collapse
+      - von-neumann-chain
+      - consciousness-causes-collapse
+    "Coherence & Entanglement":
+      - quantum-entanglement
+      - quantum-coherence
+      - decoherence
+      - coherence-operator
+      - decoherence-operator
+      - quantum-substrate
+      - quantum-bridge
+
+  "Physics — General Relativity & Cosmology":
+    "General Relativity":
+      - general-relativity
+      - einstein-field-equations
+      - spacetime-curvature
+      - ricci-tensor
+      - metric-tensor
+      - cosmological-constant
+      - geodesic
+    "Cosmology":
+      - friedmann-equations
+      - big-bang
+      - cosmic-expansion
+      - dark-energy
+      - initial-conditions
+      - cosmological-fine-tuning
+    "Mathematical Formalisms":
+      - lagrangian-formalism
+      - action-integral
+      - euler-lagrange
+      - hamiltonian-mechanics
+
+  "Physics — Thermodynamics & Information":
+    "Thermodynamics":
+      - thermodynamics
+      - entropy
+      - second-law
+      - arrow-of-time
+      - heat-death
+    "Negentropy & Information":
+      - negentropy
+      - information-theory
+      - landauer-principle
+      - shannon-entropy
+      - information-substrate
+    "Consciousness Physics":
+      - consciousness
+      - soul-field
+      - mind-body-problem
+      - hard-problem
+      - panpsychism
+
+  "Theophysics Framework":
+    "Master Equation":
+      - master-equation
+      - chi-field
+      - logos-field
+      - logos-principle
+      - grace-function
+      - sin-entropy
+      - LLC
+    "Framework Layers":
+      - formal-proof
+      - meta-framework
+      - physics-layer
+      - jesus-coherence
+      - psychology-layer
+      - civilization-layer
+      - scripture-layer
+      - evidence-layer
+      - rebuttal-layer
+    "Ten Laws":
+      - gravity-grace
+      - mass-energy-meaning
+      - em-truth
+      - strong-love
+      - thermo-judgment
+      - info-logos
+      - relativity-relationship
+      - qm-faith
+      - weak-sin
+      - coherence-christ
+    "Operators & Fields":
+      - coherence-operator
+      - decoherence-operator
+      - will-operator
+      - logos-operator
+      - grace-operator
+      - sign-preservation
+      - sign-eigenvalue
+    "Evidence & Experiments":
+      - PEAR-lab
+      - GCP
+      - PROP-COSMOS
+      - experimental-correlation
+      - sigma-significance
+      - falsification-criteria
+      - replication
+
+  "Scripture & Theological Concepts":
+    "Key Scripture Texts":
+      - john-1
+      - genesis-1
+      - isaiah-53
+      - philippians-2
+      - romans-8
+      - colossians-1
+      - hebrews-1
+      - psalm-19
+      - acts-2
+      - revelation-21
+    "Systematic Theology":
+      - christology
+      - pneumatology
+      - soteriology
+      - eschatology
+      - theodicy
+      - natural-theology
+      - creation-ex-nihilo
+      - imago-dei
+      - incarnation
+      - atonement
+    "Philosophy & Metaphysics":
+      - principle-of-sufficient-reason
+      - necessary-being
+      - contingency
+      - relational-ontology
+      - information-ontology
+      - consciousness-fundamental
+      - logos
+      - ontological-argument
+
+# ─────────────────────────────────────────────────────────────────────────────
+# AUTO-DETECT KEYWORDS
+# When yaml_tagger.py scans a paper's body text, it checks for these keywords
+# and marks matching tags with * so you can confirm them quickly.
+# Add new keywords freely — does NOT affect tag slugs.
+# ─────────────────────────────────────────────────────────────────────────────
+
+auto_detect:
+  god-the-father:           ["God the Father", "YHWH", "Father God", "Almighty", "Creator God", "Heavenly Father"]
+  jesus-the-son:            ["Jesus", "Christ", "Messiah", "Yeshua", "Son of God", "Lamb of God"]
+  holy-spirit:              ["Holy Spirit", "Ruach", "Pneuma", "Paraclete", "Comforter", "Spirit of God"]
+  trinity:                  ["Trinity", "Trinitarian", "three persons", "three-in-one", "perichoresis"]
+  father-creator:           ["creation ex nihilo", "Creator", "creation of the universe"]
+  father-sovereignty:       ["sovereignty", "omnipotence", "all-powerful", "sovereign will"]
+  jesus-incarnation:        ["Incarnation", "Word made flesh", "Logos became", "God became man"]
+  jesus-logos:              ["Logos", "divine Word", "John 1:1", "Word of God"]
+  jesus-resurrection:       ["resurrection", "risen", "raised from the dead", "Easter"]
+  jesus-grace-function:     ["grace function", "negentropic grace", "divine grace reverses"]
+  jesus-entropy-reversal:   ["entropy reversal", "negentropy", "redemption reverses"]
+  holy-spirit:              ["Holy Spirit", "Ruach HaKodesh", "Spirit of truth"]
+  spirit-quantum-field:     ["Spirit as field", "quantum field Spirit", "pervasive field"]
+  spirit-coherence:         ["Spirit maintains coherence", "spiritual coherence"]
+  trinity-perichoresis:     ["perichoresis", "mutual indwelling", "coinherence"]
+  quantum-mechanics:        ["quantum", "QM", "wave function", "superposition", "quantum field theory"]
+  observer-effect:          ["observer effect", "consciousness collapses", "observation creates"]
+  schrodinger-equation:     ["Schrödinger", "Schrodinger", "iℏ∂ψ/∂t", "wave equation"]
+  general-relativity:       ["general relativity", "GR", "Einstein field equations", "spacetime curvature"]
+  quantum-entanglement:     ["entanglement", "entangled", "nonlocal correlation", "EPR"]
+  entropy:                  ["entropy", "second law", "thermodynamic disorder", "heat death"]
+  negentropy:               ["negentropy", "negentropic", "order from chaos", "entropy reversal"]
+  consciousness:            ["consciousness", "conscious", "awareness", "qualia", "subjective experience"]
+  master-equation:          ["master equation", "χ =", "chi field", "unified equation", "Theophysics equation"]
+  logos-principle:          ["Logos principle", "Logos field", "divine information", "John 1"]
+  grace-function:           ["grace function", "G function", "divine grace", "G operator"]
+  sin-entropy:              ["sin entropy", "S_sin", "moral entropy", "spiritual entropy", "sin as disorder"]
+  chi-field:                ["χ", "chi field", "Logos field χ", "consciousness field χ"]
+  sign-preservation:        ["sign preservation", "sign eigenvalue", "σ̂", "sign operator"]
+  coherence-operator:       ["coherence operator", "Ĉ", "quantum coherence maintenance"]
+  decoherence-operator:     ["decoherence operator", "D̂", "decoherence"]
+  PEAR-lab:                 ["PEAR", "PEAR lab", "Princeton Engineering Anomalies"]
+  GCP:                      ["GCP", "Global Consciousness Project", "consciousness network"]
+  PROP-COSMOS:              ["PROP", "PROP-COSMOS", "PROP study"]
+  information-substrate:    ["information substrate", "reality is information", "it from bit"]
+  logos:                    ["Logos", "λόγος", "divine reason", "cosmic reason"]
+  consciousness-fundamental: ["consciousness is fundamental", "panpsychism", "primacy of consciousness"]
+  principle-of-sufficient-reason: ["PSR", "principle of sufficient reason", "Leibniz"]
+  necessary-being:          ["necessary being", "uncaused cause", "aseity", "self-existent"]
+  relational-ontology:      ["relational ontology", "being-in-relation", "reality is relational"]

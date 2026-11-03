@@ -1,0 +1,7 @@
+Task,Cadence,Script,Pre-requisites,Output Location,Notes
+Zero-byte cleanup,weekly,vault_cleanup_live.bat,Run dry-run first,console,Deletes empty files
+Empty folder cleanup,weekly,vault_cleanup_live.bat,Run dry-run first,console,Removes empty directories
+Duplicate detection,monthly,dedupe_same_folder_dryrun.bat,,console,Audit only - no deletions
+Duplicate cleanup,monthly,dedupe_same_folder_live.bat,Close Obsidian + dry-run,console,Deletes duplicates
+Structure validation,quarterly,vault_validator.ps1,,GLOBAL_ANALYTICS/logs/,Full audit report
+Scaffold check,quarterly,vault_scaffold.ps1 -DryRun,,console,Verify folders exist

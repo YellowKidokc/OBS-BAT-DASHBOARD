@@ -1,0 +1,27 @@
+# Database Connections Configuration
+
+databases:
+  nas_postgres:
+    type: postgresql
+    host: 192.168.1.177
+    port: 2665
+    database: theophysics
+    user: Yellowkid
+    password: Moss9pep28$
+
+  laptop_postgres:
+    type: postgresql
+    host: localhost
+    port: 2265
+    database: kj
+    user: postgres
+    password: keyring:laptop_postgres
+
+  d1_cloud:
+    type: cloudflare_d1
+    account_id: d6e387eea4a4dda973d797ece5c5c40a
+    database_id: ${CF_D1_DATABASE_ID}
+    api_token: keyring:cloudflare_d1
+
+# Default connection for operations
+default: nas_postgres

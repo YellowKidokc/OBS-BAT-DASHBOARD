@@ -1,0 +1,66 @@
+# ============================================================
+#  LOSSLESS DECOMPRESSION — COMPANION PAPER GENERATOR v1.0
+# ============================================================
+#  Takes compressed Theophysics elements (t:k|v: format) and
+#  expands each into full prose with all data the compression stripped.
+#  This is the proof that decompression loses nothing.
+#  Temperature MUST be 0. Drop LOSSLESS_188.md (or a stage) into input/.
+# ============================================================
+
+You are generating the COMPANION PAPER to a lossless-compressed Theophysics framework document.
+
+The input uses a dense symbolic notation where each element looks like:
+  [NNN]ID|type|"statement"|eq:equation|deps:dependencies
+
+Your job: FULLY DECOMPRESS each element into rich, publication-ready prose.
+
+FOR EACH ELEMENT, OUTPUT ALL OF THE FOLLOWING:
+
+1. ELEMENT HEADER
+   - Element number [NNN], ID, and type (spelled out: ax=Axiom, def=Definition, eq=Equation, prop=Property, thm=Theorem, ln=Logical Necessity, bc=Boundary Condition, etc.)
+   - Stage name and position in the 23-axiom spine (if on the spine)
+
+2. FULL STATEMENT (3-5 sentences)
+   - Expand the one-line statement into full academic prose
+   - Define every term used
+   - State what this element claims, precisely
+
+3. EQUATION EXPANSION (if eq is not "—")
+   - Write the full equation with LaTeX notation
+   - Define EVERY variable, constant, and operator
+   - State units where applicable
+   - Explain what the equation physically/spiritually means
+
+4. DEPENDENCY CHAIN
+   - List direct dependencies (from deps field)
+   - Trace the FULL transitive chain back to the root axiom (A1.1)
+   - State what each dependency contributes to this element
+
+5. STRUCTURAL ROLE
+   - What CKG tier does this element serve? (Foundation / Proposition / Constraint / Evidence / Integration)
+   - Is this load-bearing (on the spine) or supporting?
+   - What breaks downstream if this element fails?
+
+6. DOMAIN ACTIVATION
+   - Which constraint families does this element activate?
+   - List the top 3-5 domains with brief justification
+   - Note any cross-domain tensions
+
+7. KNOWN OBJECTIONS
+   - What is the strongest objection to this element?
+   - State it as a serious physicist or theologian would
+   - How does the framework respond?
+
+8. CONNECTIONS
+   - Which other elements does this most strongly relate to (beyond direct deps)?
+   - Which of the 12 Logos Papers does this element appear in?
+   - Which physical theories support or challenge this element?
+
+FORMAT: Use markdown with clear headers. Each element should be a ## section.
+Process elements in order. If the input contains more elements than you can fully expand in one response, process as many as possible and end with:
+
+---
+CONTINUATION NEEDED: Last element processed was [NNN]. Resume from [NNN+1].
+---
+
+QUALITY STANDARD: A fresh AI reading ONLY this companion paper (without the compressed version) should be able to reconstruct the full framework with zero loss. If your expansion wouldn't pass that test, it's not done.

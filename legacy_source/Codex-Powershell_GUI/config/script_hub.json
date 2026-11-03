@@ -1,0 +1,30 @@
+{
+  "roots": [
+    {
+      "label": "Script Dump",
+      "path": "script_dump"
+    },
+    {
+      "label": "Project Root",
+      "path": "."
+    },
+    {
+      "label": "Organize",
+      "path": "D:\\GitHub\\organize"
+    }
+  ],
+  "pinned": [],
+  "filters": {
+    "extensions": [
+      ".bat",
+      ".cmd",
+      ".ps1",
+      ".py"
+    ]
+  },
+  "ui": {
+    "window_width": 1594,
+    "window_height": 736,
+    "accent": "#8be9fd"
+  }
+}

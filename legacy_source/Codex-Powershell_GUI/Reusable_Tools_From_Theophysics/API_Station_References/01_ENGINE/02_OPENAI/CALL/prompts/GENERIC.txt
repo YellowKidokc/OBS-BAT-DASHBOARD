@@ -1,0 +1,10 @@
+# ============================================================
+#  GENERIC PROMPT — original backup
+#  Restored: this was the original prompt.txt before the
+#  three-layer analysis version was written.
+# ============================================================
+
+Analyze the attached files. For each file:
+1. Summarize the key points.
+2. Extract all claims, evidence, axioms, and hypotheses.
+3. Note anything that is ambiguous or requires further research.

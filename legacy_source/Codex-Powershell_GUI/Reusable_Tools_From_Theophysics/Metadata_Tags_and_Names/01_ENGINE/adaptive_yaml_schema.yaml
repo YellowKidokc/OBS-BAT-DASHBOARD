@@ -1,0 +1,48 @@
+# Suggestion-based schema for adaptive_yaml_builder.py
+fields:
+  - name: core_framework
+    kind: list
+    prompt: "Select 1-2 core framework values"
+    options:
+      - LogosField
+      - MasterEquation
+      - Theophysics
+      - ParticipatoryCosmos
+      - ConsciousSubstrate
+
+  - name: isomorphisms
+    kind: list
+    prompt: "Select isomorphisms"
+    options:
+      - GraceFunction
+      - SinEntropy
+      - SoulField
+      - CoherenceOperator
+      - DecoherenceForce
+      - InformationalGravity
+
+  - name: tags
+    kind: list
+    prompt: "Select tags (carried forward automatically each run)"
+    options_source: taxonomy_tags
+    carry_forward: true
+
+  - name: keywords
+    kind: list
+    prompt: "Add 3-5 paper-specific keywords"
+    options: []
+
+  - name: status
+    kind: scalar
+    prompt: "Set paper status"
+    default: draft
+
+  - name: paper_number
+    kind: scalar
+    prompt: "Set paper number (ex: P01)"
+    default: P##
+
+  - name: review_status
+    kind: scalar
+    prompt: "Set review status"
+    default: unreviewed

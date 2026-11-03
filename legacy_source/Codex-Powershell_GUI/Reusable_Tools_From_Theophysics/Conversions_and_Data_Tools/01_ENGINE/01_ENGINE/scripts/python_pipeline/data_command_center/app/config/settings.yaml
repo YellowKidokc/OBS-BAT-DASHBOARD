@@ -1,0 +1,23 @@
+# Application Settings
+
+application:
+  name: "Data Command Center"
+  version: "1.0.0"
+  theme: "dark"
+
+paths:
+  scripts_dir: "scripts"
+  data_lake: "data_lake"
+  logs_dir: "logs"
+
+scheduler:
+  enabled: true
+  check_interval_seconds: 60
+
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  max_log_files: 30
+
+sgo_engine:
+  epsilon: 0.0001  # Small value to prevent division by zero in OG/S calculation

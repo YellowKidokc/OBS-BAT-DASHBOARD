@@ -1,0 +1,15 @@
+seeded_dirs:
+  - _HTML
+  - _OUTPUTS
+  - _SYSTEM
+
+folder_policy_filename: .mirror-policy.yaml
+
+skip_dir_names:
+  - .git
+  - __pycache__
+
+notes:
+  - The source vault stays content-first.
+  - The mirror carries HTML, outputs, system docs, and generated artifacts.
+  - Future file-copy rules should respect folder-local `.mirror-policy.yaml`.

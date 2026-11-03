@@ -1,0 +1,154 @@
+[
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\03_VAULT_TOOLS\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\03_VAULT_TOOLS\\generate_spiritual_dashboard.py",
+    "reason": "Scoring or spiritual verdict material deferred"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\03_VAULT_TOOLS\\SWITCHBOARD\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\01_ENGINE\\core\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\01_ENGINE\\core\\vault_system_installer.py.DISABLED",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\01_ENGINE\\scripts\\python_pipeline\\obsidian_programs\\lossless_summary_engine\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\01_ENGINE\\scripts\\python_pipeline\\obsidian_programs\\lossless_summary_engine\\.gitignore",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\01_ENGINE\\scripts\\python_pipeline\\data_command_center\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\01_ENGINE\\scripts\\python_pipeline\\data_command_center\\.gitignore",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\01_ENGINE\\scripts\\python_pipeline\\data_command_center\\app\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\01_ENGINE\\scripts\\python_pipeline\\data_command_center\\app\\api\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\01_ENGINE\\scripts\\python_pipeline\\data_command_center\\app\\config\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\01_ENGINE\\scripts\\python_pipeline\\data_command_center\\app\\config\\connections.yaml.template",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\01_ENGINE\\scripts\\python_pipeline\\data_command_center\\app\\core\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\01_ENGINE\\scripts\\python_pipeline\\data_command_center\\app\\gui\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\01_ENGINE\\scripts\\python_pipeline\\data_command_center\\app\\meta\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\01_ENGINE\\scripts\\python_pipeline\\data_command_center\\app\\meta\\models.sql",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\01_ENGINE\\scripts\\python_pipeline\\data_command_center\\data_lake\\.gitkeep",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\01_ENGINE\\scripts\\python_pipeline\\data_command_center\\scripts\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\02_OPENAI\\CALL\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\02_OPENAI\\CALL\\config.txt",
+    "reason": "Local settings or credentials excluded"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\02_OPENAI\\CALL\\prompts\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\02_OPENAI\\DECOMPRESS\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\02_OPENAI\\DECOMPRESS\\config.txt",
+    "reason": "Local settings or credentials excluded"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\02_OPENAI\\YAML-COPILOT\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\02_OPENAI\\YAML-COPILOT\\config.txt",
+    "reason": "Local settings or credentials excluded"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\02_OPENAI\\PAPER-REVIEW\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\02_OPENAI\\PAPER-REVIEW\\config.txt",
+    "reason": "Local settings or credentials excluded"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\03_TEMPLATES\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\03_TEMPLATES\\Academic\\_processed\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\03_TEMPLATES\\CSS_Description\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\03_TEMPLATES\\obsidian__DUP1\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\Templates\\System\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\Templates\\System\\character_analysis_engine.js",
+    "reason": "Scoring or spiritual verdict material deferred"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\__Master_Prompt\\MAster Promtp\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\__Master_Prompt\\MAster Promtp\\O2_THE_TRUTH_ENGINE.md",
+    "reason": "Scoring or spiritual verdict material deferred"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\00_ENGINE\\03_Taxonomy_Naming\\.fisnote",
+    "reason": "Not source, template, or supported resource"
+  },
+  {
+    "source": "Z:\\_Theophysics_v3\\00_SYSTEM\\01_ENGINE\\truth_coherence_schema.yaml",
+    "reason": "Scoring or spiritual verdict material deferred"
+  }
+]

@@ -1,0 +1,28 @@
+---
+fis_schema: "folder-index.v1"
+folder_id: "FLD-20260821-577fb0fc"
+folder: "GitHub\Codex-Powershell_GUI\script_dump"
+folder_class: "project"
+confidence: 0.6
+dependency_risk: 0.0
+dominant_family: "other"
+dominant_ratio: 0.5
+file_count: 2
+classified_at: "2026-08-21T12:40:20"
+allowed_actions: ["index", "rename_internal", "subfolder_sort", "archive_exports"]
+suggested_name: "script_dump"
+---
+
+# FIS Folder Index: script_dump
+
+**Class**: project  ·  **Confidence**: 60%  ·  **Files**: 2  ·  **Dominant**: other (50%)
+
+## Allowed actions
+- index
+- rename_internal
+- subfolder_sort
+- archive_exports
+
+**Suggested name**: `script_dump`  (not applied — review before use)
+
+<!-- FIS folder-index.v1: parseable note; safe to regenerate. -->

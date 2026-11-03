@@ -1,0 +1,25 @@
+Folder,Parent,Purpose,Protected,Required Files,YAML Section
+GLOBAL_ANALYTICS,root,Single source of truth for vault-wide metrics and synthesis,FALSE,index.md,GLOBAL_ANALYTICS
+GLOBAL_ANALYTICS/metrics,GLOBAL_ANALYTICS,Quantitative measurements derived from vault contents,FALSE,,GLOBAL_ANALYTICS.structure.metrics
+GLOBAL_ANALYTICS/figures,GLOBAL_ANALYTICS,Canonical figures used across multiple projects,FALSE,,GLOBAL_ANALYTICS.structure.figures
+GLOBAL_ANALYTICS/charts,GLOBAL_ANALYTICS,Derived visual analytics,FALSE,,GLOBAL_ANALYTICS.structure.charts
+GLOBAL_ANALYTICS/logs,GLOBAL_ANALYTICS,Automation and audit trails,FALSE,,GLOBAL_ANALYTICS.structure.logs
+GLOBAL_ANALYTICS/exports,GLOBAL_ANALYTICS,AI-ready or publication-ready bundles,FALSE,,GLOBAL_ANALYTICS.structure.exports
+PROMPTS,root,Reusable cognitive and analytical entry points,FALSE,index.md,PROMPTS
+PROMPTS/research,PROMPTS,Long form analysis prompts,FALSE,,PROMPTS.structure.research
+PROMPTS/synthesis,PROMPTS,Cross domain integration prompts,FALSE,,PROMPTS.structure.synthesis
+PROMPTS/diagnostics,PROMPTS,Integrity check prompts,FALSE,,PROMPTS.structure.diagnostics
+PROMPTS/generation,PROMPTS,Content creation prompts,FALSE,,PROMPTS.structure.generation
+SCRIPTS,root,Blunt-force explicit automation tools,FALSE,,SCRIPTS
+WORKFLOWS,root,Defined repeatable operational sequences,FALSE,index.md,WORKFLOWS
+HOUSEKEEPING,root,Vault hygiene and entropy control,FALSE,,HOUSEKEEPING
+PROJECTS,root,Isolated but analytics-linked research domains,FALSE,,PROJECTS
+ASSETS,root,Reusable non-project-bound media,FALSE,,ASSETS
+ASSETS/images,ASSETS,Image files (png jpg gif svg webp),FALSE,,ASSETS.structure.images
+ASSETS/audio,ASSETS,Audio files (mp3 m4a wav ogg),FALSE,,ASSETS.structure.audio
+ASSETS/video,ASSETS,Video files (mp4 webm mov),FALSE,,ASSETS.structure.video
+ASSETS/documents,ASSETS,Document files (pdf),FALSE,,ASSETS.structure.documents
+00_SYSTEM,root,Vault configuration templates system files,TRUE,,vault.root_rules
+02_DRAFTING,root,Active writing projects and works in progress,FALSE,,vault.root_rules
+03_PUBLICATIONS,root,Finalized published content,TRUE,,vault.root_rules
+Logos,root,Core Theophysics content series,FALSE,,PROJECTS.active.logos

@@ -1,0 +1,86 @@
+# Saved Script Configurations
+# These appear as presets in the GUI dropdown
+# Add your favorite configurations here
+
+fred_interest_rates:
+  script: fred_api
+  name: "FRED - All Interest Rates"
+  description: "Fetch Fed Funds, 10Y Treasury, Mortgage rates"
+  enabled: true
+  config:
+    api_key: "${FRED_API_KEY}"
+    series_category: "Interest Rates"
+    series_id: "FEDFUNDS"
+    start_date: "2020-01-01"
+    export_csv: true
+    export_path: "./data_lake/fred/interest_rates"
+  batch:  # Run multiple series at once
+    - series_id: "FEDFUNDS"
+    - series_id: "DGS10"
+    - series_id: "DGS2"
+    - series_id: "MORTGAGE30US"
+    - series_id: "T10Y2Y"
+
+fred_inflation:
+  script: fred_api
+  name: "FRED - Inflation Indicators"
+  description: "CPI, PCE, Breakeven rates"
+  enabled: true
+  config:
+    api_key: "${FRED_API_KEY}"
+    series_category: "Inflation & Prices"
+    start_date: "2020-01-01"
+    export_csv: true
+    export_path: "./data_lake/fred/inflation"
+  batch:
+    - series_id: "CPIAUCSL"
+    - series_id: "PCEPILFE"
+    - series_id: "T10YIE"
+
+fred_employment:
+  script: fred_api
+  name: "FRED - Employment Data"
+  description: "Unemployment, payrolls, jobless claims"
+  enabled: true
+  config:
+    api_key: "${FRED_API_KEY}"
+    series_category: "Employment"
+    start_date: "2020-01-01"
+    export_csv: true
+    export_path: "./data_lake/fred/employment"
+  batch:
+    - series_id: "UNRATE"
+    - series_id: "PAYEMS"
+    - series_id: "ICSA"
+
+fred_housing:
+  script: fred_api
+  name: "FRED - Housing Market"
+  description: "Home prices, starts, sales"
+  enabled: true
+  config:
+    api_key: "${FRED_API_KEY}"
+    series_category: "Housing"
+    start_date: "2020-01-01"
+    export_csv: true
+    export_path: "./data_lake/fred/housing"
+  batch:
+    - series_id: "CSUSHPISA"
+    - series_id: "HOUST"
+    - series_id: "MORTGAGE30US"
+
+# Example: Daily yield curve check
+daily_yield_curve:
+  script: fred_api
+  name: "Daily Yield Curve Check"
+  description: "10Y-2Y and 10Y-3M spreads"
+  enabled: true
+  schedule: "0 9 * * 1-5"  # 9 AM weekdays
+  config:
+    api_key: "${FRED_API_KEY}"
+    series_category: "Interest Rates"
+    start_date: "2024-01-01"
+    export_csv: true
+  batch:
+    - series_id: "T10Y2Y"
+    - series_id: "T10Y3M"

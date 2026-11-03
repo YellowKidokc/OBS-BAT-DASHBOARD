@@ -1,0 +1,11 @@
+ID,Name,Severity,Threshold,Pattern,Message,Check Script
+E001,zero_byte_file,error,0,,File has zero bytes,vault_validator.ps1
+E002,deep_nesting,error,6,,Folder depth exceeds maximum,vault_validator.ps1
+E003,forbidden_root_file,error,,,Unauthorized file in root directory,vault_validator.ps1
+E004,missing_index,error,,,Project missing required index.md,vault_validator.ps1
+E005,file_too_large,error,10MB,,File exceeds maximum allowed size,vault_validator.ps1
+W001,orphan_asset,warning,,,Asset not linked from any note,vault_validator.ps1
+W002,duplicate_same_folder,warning,,,Duplicate file detected in same folder,dedupe_same_folder_dryrun.bat
+W003,missing_frontmatter,warning,,,Markdown file missing frontmatter,vault_validator.ps1
+W004,unnamed_asset,warning,,^(image|screenshot|untitled|IMG_|DSC_),Asset uses non-semantic naming,vault_validator.ps1
+W005,large_file,warning,1MB,,File exceeds warning threshold,vault_validator.ps1

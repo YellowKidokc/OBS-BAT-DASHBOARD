@@ -1,0 +1,13 @@
+{
+  "locations": {
+    "pipeline_workflows": "D:/GitHub/Canonizationv1/pipeline-workflows",
+    "david_os": "D:/GitHub/David-OSv3",
+    "youtube_downloader": "D:/GitHub/Research-Acquisition/yt-transcript-downloader",
+    "tts_pipeline": "O:/tts-pipeline"
+  },
+  "notes": [
+    "Copy this file to external_tools.local.json before changing machine-specific paths.",
+    "Do not put API keys or passwords in this file.",
+    "External repositories stay independent; the GUI registers and launches their existing entrypoints."
+  ]
+}

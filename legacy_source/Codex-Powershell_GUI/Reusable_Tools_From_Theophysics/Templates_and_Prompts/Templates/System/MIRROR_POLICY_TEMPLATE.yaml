@@ -1,0 +1,8 @@
+mirror_enabled: true
+
+notes:
+  purpose: "Optional local policy file for a source folder."
+  guidance:
+    - "Set mirror_enabled: false if this source folder should not appear in the architecture mirror."
+    - "Use this for junk, temporary staging, or folders that should remain source-only."
+    - "Do not use this to hide canonical content."

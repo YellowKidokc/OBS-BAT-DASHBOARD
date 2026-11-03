@@ -1,0 +1,41 @@
+{
+  "co_occurrence": {
+    "logos/method|master_equation": 2,
+    "logos/method|pillar/philosophy": 2,
+    "logos/method|pillar/physics": 2,
+    "logos/method|pillar/theology": 2,
+    "master_equation|pillar/philosophy": 2,
+    "master_equation|pillar/physics": 2,
+    "master_equation|pillar/theology": 2,
+    "pillar/philosophy|pillar/physics": 2,
+    "pillar/philosophy|pillar/theology": 2,
+    "pillar/physics|pillar/theology": 2
+  },
+  "paper_history": {},
+  "layer_frequency": {
+    "L4": 7,
+    "L5": 4,
+    "L6": 4,
+    "L7": 4,
+    "L8": 4,
+    "L9": 4,
+    "L10": 7,
+    "L11": 4,
+    "L12": 4,
+    "L13": 4,
+    "L14": 4,
+    "L15": 7,
+    "L16": 4,
+    "L17": 4,
+    "L18": 7,
+    "L19": 7,
+    "L20": 7,
+    "L21": 4,
+    "L22": 4,
+    "L23": 4,
+    "L24": 4,
+    "L25": 4,
+    "L1": 2,
+    "L2": 3
+  }
+}

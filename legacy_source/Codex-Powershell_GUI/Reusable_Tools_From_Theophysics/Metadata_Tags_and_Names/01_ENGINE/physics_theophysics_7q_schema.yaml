@@ -1,0 +1,201 @@
+version: 1
+name: physics_theophysics_7q
+
+identity:
+  entity_type:
+    - axiom
+    - law
+    - hypothesis
+    - theory
+    - observation
+    - claim
+    - mechanism
+    - definition
+    - equation
+    - evidence
+    - operator
+    - field
+    - symmetry
+    - conservation_law
+  axiom_class:
+    - primitive
+    - derived
+    - boundary
+    - disputed
+  physics_type:
+    - classical
+    - quantum
+    - relativistic
+    - thermodynamic
+    - information_theoretic
+    - consciousness
+    - unified
+  formalism:
+    - equation
+    - inequality
+    - operator
+    - field_equation
+    - lagrangian
+    - hamiltonian
+    - lindblad
+    - conservation
+  master_eq_variable:
+    - G
+    - M
+    - E
+    - S
+    - T
+    - K
+    - R
+    - Q
+    - F
+    - C
+    - none
+  symmetry_pair:
+    - G-Q
+    - M-F
+    - E-C
+    - S-R
+    - T-K
+    - none
+  chi_component:
+    - product
+    - integral
+    - coherence
+    - entropy
+    - none
+  LLC_role:
+    - kinetic
+    - potential
+    - coupling
+    - dissipative
+    - none
+
+location:
+  domain:
+    - physics
+  subdomain:
+    - mechanics
+    - electromagnetism
+    - thermodynamics
+    - quantum_mechanics
+    - general_relativity
+    - cosmology
+    - information_theory
+    - consciousness_physics
+    - moral_physics
+    - statistical_mechanics
+    - field_theory
+    - particle_physics
+  scale:
+    - quantum
+    - microscopic
+    - mesoscopic
+    - macroscopic
+    - cosmological
+    - metaphysical
+    - multi_scale
+  regime:
+    - linear
+    - nonlinear
+    - perturbative
+    - non_perturbative
+    - equilibrium
+    - non_equilibrium
+    - critical
+  isomorphism_status:
+    - ISO-confirmed
+    - ISO-parallel
+    - ISO-analogy
+
+assertion:
+  claim_type:
+    - descriptive
+    - causal
+    - ontological
+    - predictive
+    - mathematical
+    - mechanistic
+    - normative
+    - conservation
+    - symmetry_claim
+    - boundary_condition
+  precision_level:
+    - vague
+    - basic
+    - detailed
+    - mathematical
+    - precise
+  certainty_type:
+    - proven
+    - derived
+    - well_supported
+    - tentative
+    - speculative
+    - unknown
+  scope:
+    - universal
+    - domain_specific
+    - local
+    - specialized
+  coherence_prediction:
+    - increases
+    - decreases
+    - maintains
+    - oscillates
+    - none
+  entropy_relation:
+    - opposes
+    - generates
+    - neutral
+    - coupled
+  grace_dependence:
+    - required
+    - enhancing
+    - independent
+    - none
+  consciousness_role:
+    - fundamental
+    - emergent
+    - participatory
+    - observer
+    - none
+
+evidence:
+  evidence_type:
+    - empirical
+    - experimental
+    - observational
+    - mathematical
+    - logical
+    - scriptural
+    - historical
+    - inferential
+  evidence_tier:
+    - tier_1
+    - tier_2
+    - tier_3
+  replication_status:
+    - replicated
+    - partial
+    - unreplicated
+    - not_applicable
+
+falsification:
+  death_condition:
+    - self_refutation
+    - infinite_regress
+    - empirical_contradiction
+    - logical_incoherence
+    - unsupported
+  branch_status:
+    - dead
+    - survives
+    - problematic
+    - terminal
+  proof_status:
+    - open
+    - argued
+    - derived
+    - tested
+    - survived_adversary
