@@ -182,6 +182,14 @@ Prevent accidental duplicate server instances. The launcher should reuse the run
 
 The browser must never receive API keys.
 
+### Synology deployment and desktop communication are required product deliverables
+
+Do not stop at source code or a sample Compose file. Produce a repeatable Container Manager installation bundle for David's Synology. A native DSM `.spk` is optional and must not delay the system.
+
+The main user interface requirement is a Windows desktop bridge that remains connected to the Synology API. It must deliver notifications, approval requests, job results, health alerts, and cost warnings to David's desktop and let him submit files, folders, prompts, and actions. Follow `docs/DESKTOP_BRIDGE_SPEC.md`.
+
+The Synology deployment must create application directories, deploy containers, configure ports and volumes, establish least privilege, start after reboot, expose health checks, and provide upgrade/backup/recovery procedures. Follow `docs/SYNOLOGY_INSTALL_PACKAGE_SPEC.md`.
+
 ---
 
 ## 5. PHASE ONE — RIGOROUS DISCOVERY
@@ -852,6 +860,9 @@ Before broad mutation features:
 19. API Station Generator
 20. Generated fixture API station with dry-run receipt
 21. Setup, troubleshooting, and recovery guide for a non-programmer
+22. Synology Container Manager bundle with preflight checker, installer, upgrader, backup/restore, and uninstaller
+23. Windows desktop bridge installer and tray application
+24. Optional DSM `.spk` only if it provides clear value and target compatibility is established
 
 After David approves the consolidation plan, continue with the remaining safe action adapters.
 
@@ -878,6 +889,8 @@ The first milestone is complete only when:
 - Tests pass on Windows.
 - No API key is present in the repository, generated fixture, logs, or browser.
 - Clean shutdown and restart work.
+- The Synology installation bundle passes clean deployment, reboot persistence, upgrade, backup/restore, and uninstall-with-data-preservation tests.
+- The Windows desktop bridge reconnects after desktop or NAS restart and delivers a real approval request and completion notification end to end.
 
 Do not claim completion from screenshots, imports, mocks, or unit tests alone. Demonstrate the real Windows launcher, local browser dashboard, fixture-vault scan, persistent statistics, folder-context launcher, generated API station, receipts, and clean shutdown.
 

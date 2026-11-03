@@ -65,6 +65,8 @@ Build a local production HTML dashboard that launches from a Windows shortcut or
 11. Receipts, history, and undo/recovery
 12. Settings and system health
 
+The production deliverable must include a repeatable Synology Container Manager deployment bundle and a Windows desktop bridge. A native DSM `.spk` is optional, not required. The desktop communication path is the primary requirement. Follow `docs/SYNOLOGY_INSTALL_PACKAGE_SPEC.md` and `docs/DESKTOP_BRIDGE_SPEC.md`.
+
 The same action registry must also be accessible from a portable context-aware batch launcher. Follow `docs/PORTABLE_FOLDER_LAUNCHER_SPEC.md`. The HTML dashboard and numbered terminal menu are two interfaces over the same actions, not two separately maintained systems.
 
 This is a production Obsidian-vault application, not a decorative mockup.
@@ -282,6 +284,8 @@ Before implementing broad mutation capabilities, deliver:
 10. Production launcher
 11. API Station Scaffolder with a generated fixture station and dry-run receipt
 12. Portable folder launcher and numbered 1-50 fallback menu backed by the same action registry
+13. Synology Container Manager installation bundle
+14. Windows desktop bridge with tray notifications, approvals, job submission, and reconnect behavior
 
 ## Definition of done for the first milestone
 
