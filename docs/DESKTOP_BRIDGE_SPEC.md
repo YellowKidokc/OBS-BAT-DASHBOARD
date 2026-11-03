@@ -12,6 +12,8 @@ The Windows desktop bridge remains connected to the Synology and provides:
 - job progress and completion alerts
 - vault-health and emergency alerts
 - API cost warnings
+- a Recent Calls screen showing when each API request ran, which provider and model were used, the redacted endpoint address, status, duration, token usage, estimated cost, job ID, and retry count
+- an Addresses screen showing the active Synology API base URL, dashboard URL, health URL, event-stream URL, local helper addresses, connection state, and last successful contact
 - drag/drop submission
 - context-folder submission
 - quick actions
@@ -48,6 +50,25 @@ Preferred implementation:
 - visible offline/degraded state
 
 The desktop client does not need to contain the whole dashboard. It is a bridge, notification center, launcher, and quick-action interface. Detailed work opens the local HTML dashboard.
+
+## Recent Calls and Addresses
+
+The user must not need to inspect source code or configuration files to discover where the system is connecting.
+
+Provide one clearly labeled desktop/dashboard page with:
+
+- **Active API address:** the exact base URL currently used by the desktop bridge
+- **Dashboard address:** the URL that opens the browser interface
+- **Health address:** the URL used for connection checks
+- **Live-events address:** WebSocket or SSE URL and current connection state
+- **Provider addresses:** OpenAI, compatible cloud APIs, Ollama, and other configured providers; redact credentials and sensitive query parameters
+- **Recent calls:** newest first, with timestamp, action/station, provider, model, redacted destination, HTTP status or error class, elapsed time, tokens, estimated cost, job ID, and retry count
+- filters for time period, station/action, provider, model, success/failure, and device
+- CSV and JSON export with secrets removed
+- copy buttons for safe addresses and job IDs
+- a connection-test button for each configured address
+
+Record call metadata even when a request fails before receiving a response. Do not store authorization headers, API keys, raw cookies, full prompts, or attachment contents in the call ledger. Retention must be configurable, with a safe default of 90 days.
 
 ## Tray menu
 

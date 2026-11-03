@@ -188,6 +188,8 @@ Do not stop at source code or a sample Compose file. Produce a repeatable Contai
 
 The main user interface requirement is a Windows desktop bridge that remains connected to the Synology API. It must deliver notifications, approval requests, job results, health alerts, and cost warnings to David's desktop and let him submit files, folders, prompts, and actions. Follow `docs/DESKTOP_BRIDGE_SPEC.md`.
 
+The desktop and browser interfaces must include a **Recent Calls and Addresses** page. It shows the exact active Synology API, dashboard, health, and live-event addresses; every configured provider address in safely redacted form; and a newest-first call ledger with timestamp, station/action, provider, model, destination, status/error, duration, token usage, estimated cost, job ID, and retries. It must support filters, connection tests, and redacted CSV/JSON export. Never log credentials, authorization headers, raw prompts, or attachment contents.
+
 The Synology deployment must create application directories, deploy containers, configure ports and volumes, establish least privilege, start after reboot, expose health checks, and provide upgrade/backup/recovery procedures. Follow `docs/SYNOLOGY_INSTALL_PACKAGE_SPEC.md`.
 
 ---

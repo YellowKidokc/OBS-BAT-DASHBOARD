@@ -67,6 +67,8 @@ Build a local production HTML dashboard that launches from a Windows shortcut or
 
 The production deliverable must include a repeatable Synology Container Manager deployment bundle and a Windows desktop bridge. A native DSM `.spk` is optional, not required. The desktop communication path is the primary requirement. Follow `docs/SYNOLOGY_INSTALL_PACKAGE_SPEC.md` and `docs/DESKTOP_BRIDGE_SPEC.md`.
 
+The desktop and dashboard must expose a **Recent Calls and Addresses** view: active service URLs plus a secret-safe request ledger containing timestamps, provider/model, redacted destination, result, duration, tokens, estimated cost, job ID, and retries, with filters, connection tests, and CSV/JSON export.
+
 The same action registry must also be accessible from a portable context-aware batch launcher. Follow `docs/PORTABLE_FOLDER_LAUNCHER_SPEC.md`. The HTML dashboard and numbered terminal menu are two interfaces over the same actions, not two separately maintained systems.
 
 This is a production Obsidian-vault application, not a decorative mockup.
