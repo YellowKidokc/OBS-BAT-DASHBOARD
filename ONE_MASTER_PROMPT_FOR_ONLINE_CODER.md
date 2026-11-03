@@ -190,6 +190,8 @@ The main user interface requirement is a Windows desktop bridge that remains con
 
 The desktop and browser interfaces must include a **Recent Calls and Addresses** page. It shows the exact active Synology API, dashboard, health, and live-event addresses; every configured provider address in safely redacted form; and a newest-first call ledger with timestamp, station/action, provider, model, destination, status/error, duration, token usage, estimated cost, job ID, and retries. It must support filters, connection tests, and redacted CSV/JSON export. Never log credentials, authorization headers, raw prompts, or attachment contents.
 
+Implement an **AI Address Book and Messaging** layer. David can assign every configured AI a permanent logical address such as `ai://codex`, talk to it from the Windows desktop, address it with `@codex`, attach files, inspect its conversation/job history, and see availability and cost. Support group addresses and multi-AI routing. The Synology uses one physical host address with stable `/ai/{address}/message` routes; do not require a separate LAN IP for every cloud model. Keep logical addresses stable when the host IP changes, and keep provider credentials exclusively on the server. Follow `docs/DESKTOP_BRIDGE_SPEC.md`.
+
 The Synology deployment must create application directories, deploy containers, configure ports and volumes, establish least privilege, start after reboot, expose health checks, and provide upgrade/backup/recovery procedures. Follow `docs/SYNOLOGY_INSTALL_PACKAGE_SPEC.md`.
 
 ---

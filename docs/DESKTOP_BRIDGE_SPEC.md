@@ -70,6 +70,44 @@ Provide one clearly labeled desktop/dashboard page with:
 
 Record call metadata even when a request fails before receiving a response. Do not store authorization headers, API keys, raw cookies, full prompts, or attachment contents in the call ledger. Retention must be configurable, with a safe default of 90 days.
 
+## AI Address Book and Messaging
+
+David must be able to assign every AI a permanent human-readable address and communicate with it from the desktop.
+
+Use one Synology network address with stable logical AI routes instead of requiring a separate physical LAN IP for every cloud model. Each AI receives:
+
+- a unique address such as `ai://codex`, `ai://claude`, `ai://gemini`, or a user-defined name
+- a stable HTTP route such as `/ai/{address}/message`
+- display name, provider, model, role, color/icon, capabilities, enabled state, and default system prompt
+- optional inbox and outbox
+- conversation history and job history
+- connection/availability state and last successful response time
+- per-AI usage, tokens, estimated cost, limits, and error history
+
+The desktop interface must provide:
+
+- an AI address book
+- **Talk** button for each AI
+- text conversation with attachments
+- optional speech-to-text input and text-to-speech replies
+- direct addressing using `@codex`, `@claude`, and similar aliases
+- group addresses such as `ai://research-team` or `@all`
+- routing a single question to one AI, several AIs, or a sequential workflow
+- clear indication of which AI produced every response
+- pause, disable, rename, test, and revoke controls
+
+Example routes after deployment:
+
+```text
+http://192.168.2.50:<port>/ai/codex/message
+http://192.168.2.50:<port>/ai/claude/message
+http://192.168.2.50:<port>/ai/research-team/message
+```
+
+The actual host, port, and scheme are installation settings. The logical `ai://` address remains stable if the Synology IP or port later changes.
+
+Do not expose provider API keys to the desktop client or place them in AI addresses. Provider credentials remain encrypted or secret-mounted on the server. A logical AI address identifies a configured agent; it does not falsely imply that a cloud model owns a dedicated physical IP address.
+
 ## Tray menu
 
 Suggested menu:

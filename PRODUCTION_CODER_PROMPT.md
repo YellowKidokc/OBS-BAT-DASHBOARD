@@ -69,6 +69,8 @@ The production deliverable must include a repeatable Synology Container Manager 
 
 The desktop and dashboard must expose a **Recent Calls and Addresses** view: active service URLs plus a secret-safe request ledger containing timestamps, provider/model, redacted destination, result, duration, tokens, estimated cost, job ID, and retries, with filters, connection tests, and CSV/JSON export.
 
+Provide an **AI Address Book and Messaging** interface. Every configured AI has a permanent logical address (`ai://name` and `@name`), a stable server route, identity/role/model metadata, conversation and job history, availability, and usage/cost records. David can talk to one AI or a group from the desktop with text and attachments, with optional speech input and spoken replies. Use one Synology host IP and logical routes rather than pretending cloud models each own a physical LAN IP. Provider credentials remain server-side.
+
 The same action registry must also be accessible from a portable context-aware batch launcher. Follow `docs/PORTABLE_FOLDER_LAUNCHER_SPEC.md`. The HTML dashboard and numbered terminal menu are two interfaces over the same actions, not two separately maintained systems.
 
 This is a production Obsidian-vault application, not a decorative mockup.
