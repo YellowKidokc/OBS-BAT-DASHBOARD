@@ -14,7 +14,25 @@ Existing tool inventory:
 
 Curated recovered-tool library:
 
-`D:\GitHub\pipeline-workflows\Codex-Powershell_GUI\Reusable_Tools_From_Theophysics`
+`D:\GitHub\Codex-Powershell_GUI\Reusable_Tools_From_Theophysics`
+
+Existing desktop GUI and safe-action reference implementation:
+
+`D:\GitHub\Codex-Powershell_GUI`
+
+This standalone Git repository is the authoritative implementation reference for the current Script Hub. It already includes a PySide6 launcher, script discovery, API definitions, file actions, receipts, setup/repair launchers, and a recovered-tool library. Inspect and test these components before replacing them:
+
+- `script_hub.py`
+- `file_actions.py`
+- `file_actions_gui.py`
+- `OPEN_FILE_ACTIONS.bat`
+- `SETUP_OR_REPAIR.bat`
+- `TROUBLESHOOT.bat`
+- `config/script_hub.json`
+- `config/external_tools.example.json`
+- `receipts/`
+
+Do not use `D:\GitHub\pipeline-workflows\Codex-Powershell_GUI` as the development base. That is a large contaminated working copy containing unrelated/untracked trees. It may be consulted only if a specifically identified artifact is missing from the standalone repository.
 
 Read these recovered-library records before inspecting its scripts:
 
@@ -27,6 +45,8 @@ The recovered library currently contains approximately 256 files, including abou
 The existing engine contains years of Python, PowerShell, batch, OpenAI, Markdown, YAML, evidence, scoring, TTS, media, GUI, and vault-management work. Treat it as evidence and candidate functionality, not as automatically canonical code.
 
 The recovered-tool library should be the first action-candidate catalog because it was assembled specifically for reuse. Compare it against the larger engine by SHA-256 so identical copies are not independently reviewed or imported twice.
+
+The existing `file_actions.py` is the first adapter candidate for receipt-backed actions. Verify its behavior on the fixture vault, then either wrap it behind the web action contract or extract its safe primitives. Preserve its no-overwrite behavior and improve it with a true preview/approval stage rather than discarding it.
 
 ## Mission
 
@@ -154,6 +174,7 @@ Implement the complete Vault Health and Emergency specification in `docs/VAULT_H
 
 ### API/AI
 
+- one-click API station scaffolder
 - reusable prompt templates
 - editable project override
 - exact final-prompt preview
@@ -165,6 +186,8 @@ Implement the complete Vault Health and Emergency specification in `docs/VAULT_H
 - retry without duplicating completed outputs
 
 Never expose API keys to the frontend. Use environment variables or an OS-appropriate secret store. Redact secrets from all logs.
+
+Implement the complete station generator described in `docs/API_STATION_SCAFFOLDER_SPEC.md`. David should be able to double-click a batch file, name a station, and receive a ready-to-run `INBOX / OUTBOX / BACKSIDE / calls` workflow. Routine use must require only placing source files in the inbox, editing the prompt, and launching the call. The generator must not embed a credential or silently send an API request during setup.
 
 ## Prompt architecture
 
@@ -254,6 +277,7 @@ Before implementing broad mutation capabilities, deliver:
 8. Read-only Vault Health MVP
 9. Fixture vault and automated tests
 10. Production launcher
+11. API Station Scaffolder with a generated fixture station and dry-run receipt
 
 ## Definition of done for the first milestone
 

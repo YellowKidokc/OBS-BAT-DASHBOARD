@@ -26,6 +26,7 @@ Supporting requirements:
 
 - [`docs/VAULT_HEALTH_AND_EMERGENCY_SPEC.md`](docs/VAULT_HEALTH_AND_EMERGENCY_SPEC.md)
 - [`docs/PRODUCT_ARCHITECTURE.md`](docs/PRODUCT_ARCHITECTURE.md)
+- [`docs/API_STATION_SCAFFOLDER_SPEC.md`](docs/API_STATION_SCAFFOLDER_SPEC.md)
 
 ## Existing engine to inventory
 
@@ -33,8 +34,14 @@ Supporting requirements:
 
 Curated reusable-tool recovery library:
 
-`D:\GitHub\pipeline-workflows\Codex-Powershell_GUI\Reusable_Tools_From_Theophysics`
+`D:\GitHub\Codex-Powershell_GUI\Reusable_Tools_From_Theophysics`
 
 The recovery library contains its own SHA-256 inventory and adaptation notes. Its contents are reference candidates, not verified production actions.
+
+Existing GUI and safe-action implementation:
+
+`D:\GitHub\Codex-Powershell_GUI`
+
+This standalone repository is the primary implementation reference. Do not develop against the much larger `D:\GitHub\pipeline-workflows\Codex-Powershell_GUI` working copy.
 
 Do not reorganize that directory as part of initial dashboard development.
