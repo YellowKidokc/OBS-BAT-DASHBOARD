@@ -1,7 +1,7 @@
 {
   "tool": "tools/inventory/inventory.py",
-  "version": "0.1.0",
-  "generated_utc": "2026-11-03T23:16:41+00:00",
+  "version": "0.2.0",
+  "generated_utc": "2026-11-04T00:48:57+00:00",
   "roots": {
     "legacy_snapshot": "/home/user/OBS-BAT-DASHBOARD/legacy_source"
   },

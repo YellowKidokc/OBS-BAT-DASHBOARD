@@ -14,7 +14,7 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 SCRIPT_EXT = {".py": "python", ".ps1": "powershell", ".psm1": "powershell",
               ".bat": "batch", ".cmd": "batch", ".sh": "shell", ".js": "javascript",
               ".ts": "typescript", ".vbs": "vbscript", ".ahk": "autohotkey"}
@@ -41,6 +41,15 @@ DRYRUN = re.compile(r"dry[-_ ]?run|--preview|WhatIf", re.I)
 RECEIPT = re.compile(r"receipt|manifest", re.I)
 SECRET_REF = re.compile(r"api[_-]?key|OPENAI_API_KEY|ANTHROPIC_API_KEY|Authorization|Bearer", re.I)
 SECRET_LITERAL = re.compile(r"sk-[A-Za-z0-9_-]{20,}|(?:api[_-]?key|token|secret)\s*[:=]\s*['\"][A-Za-z0-9_\-]{16,}['\"]", re.I)
+REDACT = re.compile(r"(sk-[A-Za-z0-9_-]{8})[A-Za-z0-9_-]+|((?:api[_-]?key|token|secret|password|passwd|bearer|authorization)[\"']?\s*[:=]?\s*[\"']?)([^\s\"',;]{6,})", re.I)
+SENSITIVE_NAME = re.compile(r"(^|[\\/])(\.env[^\\/]*|config\.txt|.*secret.*|.*credential.*|.*token.*)$", re.I)
+
+
+def redact(text: str) -> str:
+    """Mask anything that looks like a credential before it reaches a report."""
+    return REDACT.sub(lambda m: (m.group(1) + "***REDACTED***") if m.group(1) else (m.group(2) + "***REDACTED***"), text)
+
+
 NETWORK = re.compile(r"requests\.|httpx|urllib\.request|openai|anthropic|Invoke-RestMethod|Invoke-WebRequest|curl ", re.I)
 GUI = re.compile(r"PySide|PyQt|tkinter|customtkinter|Windows\.Forms|fastapi|flask", re.I)
 CLI = re.compile(r"argparse|sys\.argv|click\b|typer\b|param\s*\(|%~?1", re.I)
@@ -87,7 +96,7 @@ def classify(p: Path, text: str | None) -> dict:
     r.update({k: "" for k in keys})
     if text is None:
         return r
-    r["purpose"] = purpose(text, ext)
+    r["purpose"] = "" if (SECRET_LITERAL.search(text) or SENSITIVE_NAME.search(p.name)) else redact(purpose(text, ext))
     if ext == ".py":
         mods = sorted({(a or b).split(".")[0] for a, b in PY_IMPORT.findall(text)})
         r["dependencies"] = ";".join(mods)
@@ -142,13 +151,14 @@ def scan(roots: list[tuple[str, Path]], out: Path) -> None:
                        "modified_utc": datetime.fromtimestamp(st.st_mtime, timezone.utc).isoformat(timespec="seconds")}
                 row.update(classify(p, text))
                 rows.append(row)
+                sens = row["secret_literal"] == "Y" or bool(SENSITIVE_NAME.search(fn))
                 if text:
                     for i, line in enumerate(text.splitlines(), 1):
                         for kind, rx in STALE:
                             for m in rx.finditer(line):
                                 stale_rows.append({"source_label": label, "relative_path": row["relative_path"],
-                                                   "line": i, "kind": kind, "match": m.group(0),
-                                                   "context": line.strip()[:160]})
+                                                   "line": i, "kind": kind, "match": redact(m.group(0)),
+                                                   "context": "" if sens else redact(line.strip()[:160])})
                                 break
     by_hash = defaultdict(list)
     for r in rows:
@@ -187,7 +197,7 @@ def write_csv(path, fields, rows):
 
 def grep_lines(path: str, rx) -> list[str]:
     text = read_text(Path(path)) or ""
-    return [f"{i}: {l.strip()[:140]}" for i, l in enumerate(text.splitlines(), 1) if rx.search(l)][:8]
+    return [f"{i}: {redact(l.strip()[:140])}" for i, l in enumerate(text.splitlines(), 1) if rx.search(l)][:8]
 
 
 def write_destructive(path, rows):

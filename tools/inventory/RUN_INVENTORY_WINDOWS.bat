@@ -9,6 +9,7 @@ python "%~dp0inventory.py" ^
   --root "engine=C:\Users\David\Documents\faiththruphysics.com\00_SYSTEM\01_SYSTEM_OS\00_VAULT\02_CONTROL\01_ENGINE" ^
   --out "%OUT%"
 if errorlevel 1 (echo Inventory FAILED. & pause & exit /b 1)
+python "%~dp0visualize.py" "%OUT%"
 echo Reports written to: %OUT%
-start "" "%OUT%"
+start "" "%OUT%\INVENTORY_REPORT.html"
 pause
