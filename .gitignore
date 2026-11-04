@@ -8,7 +8,8 @@ venv/
 logs/
 runtime/
 receipts/
-reports/
+reports/*
+!reports/phase1/
 node_modules/
 dist/
 build/

@@ -8,6 +8,49 @@ Read this entire prompt before changing anything.
 
 ---
 
+## 0. STATUS UPDATE — READ BEFORE SECTION 1 (2026-11-04)
+
+Work already done on branch `claude/peaceful-newton-a8bhkh` (PR YellowKidokc/OBS-BAT-DASHBOARD#1). **Wrap and reuse these, do not rebuild them.** Each is tested on throwaway test folders but **not yet on Windows** — treat as WRAP candidates that still need the Section 16 test-vault checks.
+
+| Path | What it is |
+|---|---|
+| `tools/inventory/inventory.py` (+ `RUN_INVENTORY_WINDOWS.bat`) | Phase One read-only inventory (Section 5). Produces ENGINE_INVENTORY.csv, EXACT_DUPLICATE_GROUPS.csv, SIMILAR_IMPLEMENTATIONS.md, STALE_PATHS.csv, DESTRUCTIVE_SCRIPT_REPORT.md, SUMMARY.json. Redacts credentials. |
+| `tools/inventory/visualize.py` | Offline HTML inventory report (folders, risk, overlap heatmap, duplicates, stale paths, keywords, script table). |
+| `tools/actions/flatten.py` (+ `FLATTEN_FOLDER.bat`, `UNDO_FLATTEN.bat`) | Safe flatten (Section 11): manifest-first, no overwrite, removes only empty folders, undo with hash check. |
+| `tools/actions/inhouse.py` + `_mode_select.bat` | Every action offers **Here** (in place) or **In-house** (hash-verified copy in `%USERPROFILE%\VaultOps\WORKSPACE`). Keep this two-mode pattern for all actions. |
+| `tools/actions/convert.py` (+ 4 launchers, `SETUP_CONVERTERS.bat`) | Excel⇄CSV round trip (book folder + `_book.json`), anything→Markdown (MarkItDown), Markdown→docx/html/pdf/pptx/odt/rtf/epub/txt (pandoc). Extends legacy `file_actions.py`. |
+| `tools/diag/` | Read-only instruments: VAULT_PULSE, REPO_READY, BRANCH_AUDIT, DUPLICATE_REPORT. Markdown reports under `%USERPROFILE%\VaultOps\reports\<tool>\`, plus `<tool>_LATEST.md`. |
+
+### Phase One results
+Phase One discovery has run on David's machine: 2,094 files, 677 Python / 173 PowerShell / 142 batch scripts, 353 exact-duplicate groups, 519 files with stale paths, 69 scripts that can delete, 58 that move or rename. Use `reports/phase1/windows*/` when it is pushed; until then ask David to run `tools\inventory\RUN_INVENTORY_WINDOWS.bat`. **Do not repeat discovery from scratch.**
+
+### Secrets: a confirmed live risk
+22 files hold plain-text API keys: `config.txt` in every `02_OPENAI/*`, `80_OPENAI/*` and `81_OPENAI_BLANK/CALL` station, plus `01_ENGINE/config.txt`, `01_ENGINE/CDCM_SETUP.txt`, `09_OPERATOR/prompts/config.txt` and `send_templeton.py` (two copies). Never copy, print, log or commit their contents. Any report that excerpts file text must redact credentials (see `redact()` in inventory.py). Migrating these keys to environment variables or an OS secret store is part of the API station work (Section 13).
+
+### Revised build order
+1. Test the existing tools on the test vault and on Windows (Section 16), and fix whatever fails.
+2. Build the dashboard shell, SQLite schema and versioned action registry (Sections 4, 8, 15).
+3. Register the existing tools as actions. Their CLIs already follow the contract below.
+4. Build the Vault Health MVP (Section 12). It can build on `vault_pulse.py`'s baseline/diff engine.
+5. Build the API Station Generator (Section 13), then Synology and the desktop bridge.
+
+### Action contract (for the dashboard and for Nerve integration)
+Every action must be a CLI that:
+- defaults to a dry run that prints the plan and changes nothing;
+- mutates only with `--apply`;
+- takes explicit paths and never writes inside a scanned root unless that is the action's purpose;
+- writes a JSON receipt with input and output hashes;
+- returns meaningful exit codes (0 ok, 1 warnings/partial, 2 refused or blocked).
+
+David's Nerve system will call these CLIs directly, so keep the contract stable and versioned.
+
+### Still unbuilt (needs schemas from David first)
+REGISTRY_DRIFT, SIDECAR_CHECK, ME_COVERAGE, SNAPSHOT_STATE, CHANGE_DIGEST and COCOINDEX_READY depend on `registry.sqlite`, `.fis.json` sidecars, `change_log`, the admission manifest and CocoIndex paths. Do not guess these schemas. Ask David for them.
+
+---
+
+---
+
 ## 1. REPOSITORIES AND SOURCE LOCATIONS
 
 ### Clean production repository
