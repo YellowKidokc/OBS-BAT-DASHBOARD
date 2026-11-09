@@ -20,9 +20,36 @@ Double-click one launcher and open a local HTML dashboard in the default browser
 
 ## Start here
 
+### Working read-only folder snapshot
+
+On Windows, drag a vault or parent folder onto `FOLDER_SNAPSHOT.bat`. Python 3.11+
+with the Windows `py` launcher is required. The launcher opens a self-contained
+HTML report and saves JSON alongside it under local application data. No package
+installation or internet access is required. The Windows launcher itself still
+needs verification on a Windows machine.
+
+For several non-overlapping vaults, use:
+
+```sh
+python tools/folder_snapshot.py /path/to/vault-one /path/to/vault-two --output /path/outside-vaults/new-report --open
+python -m unittest discover -s tests -v
+```
+
+The report includes expandable folders, dot-prefixed and empty folders, counts,
+sizes, capture parameters, and visible scan errors. System folders are shown as
+excluded boundaries by default; `--include-system` includes their metadata.
+Links/junctions are not traversed. File contents are never embedded. A snapshot
+is not an atomic backup. Reports contain local paths: review before sharing.
+
+This is the first standalone snapshot slice. Health diagnostics, snapshot
+comparison, search/filtering, large-tree paging, and modifying actions remain
+unimplemented; the wider specifications below describe future work.
+
 Give [`PRODUCTION_CODER_PROMPT.md`](PRODUCTION_CODER_PROMPT.md) to the implementation agent.
 
 Supporting requirements:
+
+- [`docs/FOLDER_SNAPSHOT_SPEC.md`](docs/FOLDER_SNAPSHOT_SPEC.md)
 
 - [`docs/VAULT_HEALTH_AND_EMERGENCY_SPEC.md`](docs/VAULT_HEALTH_AND_EMERGENCY_SPEC.md)
 - [`docs/PRODUCT_ARCHITECTURE.md`](docs/PRODUCT_ARCHITECTURE.md)
