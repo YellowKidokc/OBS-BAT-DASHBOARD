@@ -1,0 +1,22 @@
+{
+  "tool": "tools/inventory/inventory.py",
+  "version": "0.2.0",
+  "generated_utc": "2026-11-04T00:48:57+00:00",
+  "roots": {
+    "legacy_snapshot": "/home/user/OBS-BAT-DASHBOARD/legacy_source"
+  },
+  "files": 284,
+  "bytes": 3190588,
+  "scripts_by_language": {
+    "batch": 15,
+    "powershell": 4,
+    "python": 127
+  },
+  "exact_duplicate_groups": 5,
+  "stale_path_hits": 1271,
+  "stale_path_files": 83,
+  "scripts_that_delete": 10,
+  "scripts_that_move_rename": 8,
+  "possible_secret_literals": [],
+  "scan_errors": 0
+}

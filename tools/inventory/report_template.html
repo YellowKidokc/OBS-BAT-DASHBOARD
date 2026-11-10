@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Engine Inventory Report</title>
+<style>
+:root{color-scheme:light;
+ --bg:#f4f4f2;--surface-1:#fcfcfb;--surface-2:#efeeea;--line:#dddcd6;
+ --text-primary:#0b0b0b;--text-secondary:#52514e;--text-muted:#77766f;
+ --s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;--s5:#e87ba4;--s6:#008300;--s7:#6250d6;--s8:#e34948;
+ --good:#0ca30c;--warning:#fab219;--serious:#ec835a;--critical:#d03b3b;--neutral:#a9a8a0;
+ --q1:#cde2fb;--q2:#9ec5f4;--q3:#6da7ec;--q4:#3987e5;--q5:#256abf;--q6:#184f95;--q7:#0d366b;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;
+ --bg:#111110;--surface-1:#1a1a19;--surface-2:#242422;--line:#33332f;
+ --text-primary:#f0efec;--text-secondary:#c3c2b7;--text-muted:#8f8e86;
+ --s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;--s6:#008300;--s7:#9085e9;--s8:#e66767;
+ --neutral:#5d5c56;--q1:#184f95;--q2:#1c5cab;--q3:#256abf;--q4:#2a78d6;--q5:#5598e7;--q6:#86b6ef;--q7:#cde2fb;}}
+:root[data-theme="dark"]{color-scheme:dark;
+ --bg:#111110;--surface-1:#1a1a19;--surface-2:#242422;--line:#33332f;
+ --text-primary:#f0efec;--text-secondary:#c3c2b7;--text-muted:#8f8e86;
+ --s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;--s6:#008300;--s7:#9085e9;--s8:#e66767;
+ --neutral:#5d5c56;--q1:#184f95;--q2:#1c5cab;--q3:#256abf;--q4:#2a78d6;--q5:#5598e7;--q6:#86b6ef;--q7:#cde2fb;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text-primary);font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{padding:28px 24px 8px;max-width:1240px;margin:auto}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+h2{font-size:16px;margin:0 0 2px}
+.sub{color:var(--text-secondary);margin:0 0 14px}
+.muted{color:var(--text-muted)}
+main{max-width:1240px;margin:auto;padding:0 24px 60px}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 24px;display:flex;gap:4px;overflow-x:auto}
+nav a{color:var(--text-secondary);text-decoration:none;padding:4px 10px;border-radius:6px;white-space:nowrap;font-size:13px}
+nav a:hover{background:var(--surface-2);color:var(--text-primary)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:18px 0}
+.tile{background:var(--surface-1);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.tile b{display:block;font-size:24px;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.tile span{color:var(--text-secondary);font-size:12px}
+.tile.alert{border-color:var(--critical)}
+.card{background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:18px;margin:14px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:860px){.grid2{grid-template-columns:1fr}}
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin:8px 0 10px;font-size:12px;color:var(--text-secondary)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.rowbar{display:grid;grid-template-columns:minmax(120px,280px) 1fr 70px;gap:10px;align-items:center;padding:3px 0;font-size:12px}
+.rowbar .lbl{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text-secondary)}
+.rowbar .num{text-align:right;font-variant-numeric:tabular-nums;color:var(--text-secondary)}
+.track{display:flex;gap:2px;height:14px}
+.track span{display:block;height:100%;min-width:2px}
+.track span:first-child{border-radius:4px 0 0 4px}.track span:last-child{border-radius:0 4px 4px 0}
+.track span:only-child{border-radius:4px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--text-secondary);font-weight:600;cursor:pointer;user-select:none;white-space:nowrap;position:sticky;top:0;background:var(--surface-1)}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.path{font-family:ui-monospace,Consolas,monospace;font-size:11.5px;word-break:break-all}
+.pill{display:inline-flex;align-items:center;gap:4px;padding:1px 7px;border-radius:999px;font-size:11px;background:var(--surface-2);color:var(--text-primary);white-space:nowrap}
+.pill i{width:8px;height:8px;border-radius:50%}
+.controls{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+input,select,button{font:inherit;font-size:13px;padding:6px 9px;border-radius:7px;border:1px solid var(--line);background:var(--surface-2);color:var(--text-primary)}
+input[type=search]{flex:1;min-width:200px}
+button{cursor:pointer}
+.scroll{max-height:620px;overflow:auto;border:1px solid var(--line);border-radius:8px}
+.heat{overflow-x:auto}.heat table{width:auto}
+.heat td{padding:0;border:2px solid var(--surface-1);width:34px;height:30px;text-align:center;font-size:11px;font-variant-numeric:tabular-nums}
+.heat th{position:static;font-weight:400;font-size:11px;cursor:default;background:none}
+.heat th.col{writing-mode:vertical-rl;transform:rotate(180deg);height:150px;text-align:left;padding:4px 0}
+.heat th.rowh{max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:right}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.note{border-left:3px solid var(--warning);background:var(--surface-2);padding:10px 14px;border-radius:0 8px 8px 0;color:var(--text-secondary);font-size:13px}
+#tip{position:fixed;pointer-events:none;z-index:20;background:var(--surface-1);color:var(--text-primary);border:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,0,.18);border-radius:8px;padding:8px 10px;font-size:12px;max-width:380px;display:none}
+#tip b{display:block;margin-bottom:2px}
+.toggle{position:absolute;top:18px;right:24px}
+@media (max-width:600px){header,main{padding-left:16px;padding-right:16px}.rowbar{grid-template-columns:110px 1fr 50px}.toggle{position:static;margin-bottom:8px}}
+</style>
+</head>
+<body>
+<header style="position:relative">
+ <button class="toggle" id="theme" aria-label="Toggle dark mode">◐ Theme</button>
+ <h1>Engine Inventory Report</h1>
+ <p class="sub" id="meta"></p>
+</header>
+<nav>
+ <a href="#overview">Overview</a><a href="#where">Where the code lives</a><a href="#risk">What it can do</a>
+ <a href="#overlap">Overlap</a><a href="#dups">Duplicates</a><a href="#stale">Stale paths</a>
+ <a href="#keywords">Keywords</a><a href="#all">Every script</a>
+</nav>
+<main>
+<section id="overview">
+ <div class="tiles" id="tiles"></div>
+ <div class="note"><b>Read this first.</b> Everything here comes from reading the files, not running them. "Destructive" means the code
+ <i>contains</i> a delete call; it doesn't prove that path runs. Whether a tool <i>works</i> is unknown until it passes a fixture test —
+ the disposition column is a starting point for review, not a verdict. Values that looked like credentials were redacted before this page was built.</div>
+</section>
+
+<section id="where" class="card">
+ <h2>Where the code lives</h2><p class="sub">Scripts per folder, split by language. Top 25 folders by file count.</p>
+ <div class="legend" id="langLegend"></div><div id="langBars"></div>
+</section>
+
+<section id="risk" class="card">
+ <h2>What it can do to your files</h2><p class="sub">Scripts per folder by the most dangerous thing they contain.</p>
+ <div class="legend" id="riskLegend"></div><div id="riskBars"></div>
+</section>
+
+<section id="overlap" class="card">
+ <h2>How the folders overlap</h2><p class="sub">Number of byte-identical files shared by each pair of folders. Darker = more copies of the same thing living in both places.</p>
+ <div class="heat" id="heat"></div>
+</section>
+
+<section id="dups" class="grid2">
+ <div class="card" style="margin:0">
+  <h2>Duplicate families</h2><p class="sub" id="dupSub"></p>
+  <div class="scroll" style="max-height:520px"><table id="famTable"></table></div>
+ </div>
+ <div class="card" style="margin:0">
+  <h2>Same name, different code</h2><p class="sub">Script names that exist in several versions. Compare these before choosing one.</p>
+  <div id="variants"></div>
+ </div>
+</section>
+
+<section id="stale" class="grid2">
+ <div class="card" style="margin:0">
+  <h2>Stale paths by kind</h2><p class="sub">Lines pointing at old drives, old vault versions, or LAN addresses.</p>
+  <div id="staleKinds"></div>
+  <h2 style="margin-top:18px">Most-referenced old locations</h2><div id="staleTargets"></div>
+ </div>
+ <div class="card" style="margin:0">
+  <h2>Files with the most stale references</h2><p class="sub">Excludes generic absolute paths.</p>
+  <div id="staleFiles"></div>
+ </div>
+</section>
+
+<section id="keywords" class="card">
+ <h2>What the code is about</h2><p class="sub">Most frequent words in script names and their first descriptive line. Click a word to filter the table below.</p>
+ <div id="kwBars" style="columns:2 320px;column-gap:28px"></div>
+</section>
+
+<section id="all" class="card">
+ <h2>Every script</h2><p class="sub" id="allSub"></p>
+ <div class="controls">
+  <input type="search" id="q" placeholder="Search path, folder, or purpose…">
+  <select id="fRisk"><option value="">All risk levels</option></select>
+  <select id="fLang"><option value="">All languages</option></select>
+  <select id="fDisp"><option value="">All dispositions</option></select>
+  <select id="fFlag"><option value="">No flag filter</option><option value="stale">Has stale paths</option><option value="dup">Has exact copies</option><option value="sec">Possible secret</option><option value="nodry">Mutates, no dry run</option></select>
+  <button id="csv">Export view (CSV)</button>
+ </div>
+ <div class="scroll"><table id="tbl"></table></div>
+ <p style="text-align:center"><button id="more">Show more</button></p>
+</section>
+</main>
+<div id="tip" role="tooltip"></div>
+<script>
+const D=/*__DATA__*/null;
+const $=s=>document.querySelector(s), esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const tail=(s,n=42)=>{s=String(s);const one=Object.keys(D.summary.roots).length===1;if(one)s=s.replace(/^[^:]+: /,"");s=s.replace(/^Reusable_Tools_From_Theophysics\//,"RTFT/");return s.length>n?"…"+s.slice(-(n-1)):s};
+const fmt=n=>n.toLocaleString(), bytes=b=>b<1024?b+" B":b<1048576?(b/1024).toFixed(1)+" KB":b<1073741824?(b/1048576).toFixed(1)+" MB":(b/1073741824).toFixed(2)+" GB";
+const LANGS=["python","powershell","batch","javascript","shell","typescript","vbscript","autohotkey"];
+const langColor=l=>`var(--s${LANGS.indexOf(l)+1||8})`;
+const RISKS=[["READ-ONLY (heuristic)","Read-only","var(--good)","✓"],["WRITES","Writes files","var(--warning)","✎"],["MUTATING (move/rename)","Moves / renames","var(--serious)","⇄"],["DESTRUCTIVE","Can delete","var(--critical)","✕"]];
+const tip=$("#tip");
+function showTip(e,html){tip.innerHTML=html;tip.style.display="block";const x=Math.min(e.clientX+14,innerWidth-tip.offsetWidth-8),y=Math.min(e.clientY+14,innerHeight-tip.offsetHeight-8);tip.style.left=x+"px";tip.style.top=y+"px"}
+document.addEventListener("mouseover",e=>{const t=e.target.closest("[data-tip]");if(t)showTip(e,t.dataset.tip);else tip.style.display="none"});
+document.addEventListener("mousemove",e=>{if(tip.style.display==="block"&&e.target.closest("[data-tip]"))showTip(e,e.target.closest("[data-tip]").dataset.tip)});
+const theme=$("#theme");theme.onclick=()=>{const r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;r.dataset.theme=dark?"light":"dark";try{localStorage.setItem("invTheme",r.dataset.theme)}catch(e){}};
+try{const t=localStorage.getItem("invTheme");if(t)document.documentElement.dataset.theme=t}catch(e){}
+
+const S=D.summary;
+$("#meta").innerHTML=`Generated ${esc(S.generated_utc.replace("T"," ").replace("+00:00"," UTC"))} · inventory v${esc(S.version)}<br>`+Object.entries(S.roots).map(([k,v])=>`<b>${esc(k)}</b> <span class="path">${esc(v)}</span>`).join(" · ");
+const scr=D.scripts, mut=scr.filter(s=>s.r!=="READ-ONLY (heuristic)"), nodry=mut.filter(s=>s.dr==="N").length;
+const tiles=[[fmt(S.files),"files scanned"],[bytes(S.bytes),"total size"],[fmt(scr.length),"scripts"],
+ [fmt(S.exact_duplicate_groups),`duplicate groups · ${bytes(D.wasted_total)} redundant`],
+ [fmt(S.stale_path_files),"files with stale paths"],[fmt(S.scripts_that_delete),"scripts that can delete",S.scripts_that_delete>0],
+ [fmt(nodry),"mutating scripts with no dry run"],[fmt(S.possible_secret_literals.length),"files that may hold a key",S.possible_secret_literals.length>0]];
+$("#tiles").innerHTML=tiles.map(([b,s,a])=>`<div class="tile${a?" alert":""}"><b>${b}</b><span>${s}</span></div>`).join("");
+
+function stacked(el,legendEl,rows,keys,colorOf,labelOf,valOf){
+ legendEl.innerHTML=keys.map(k=>`<span><i style="background:${colorOf(k)}"></i>${esc(labelOf(k))}</span>`).join("");
+ const max=Math.max(...rows.map(r=>keys.reduce((a,k)=>a+(valOf(r,k)||0),0)),1);
+ el.innerHTML=rows.map(r=>{const tot=keys.reduce((a,k)=>a+(valOf(r,k)||0),0);
+  const segs=keys.filter(k=>valOf(r,k)).map(k=>`<span style="width:${valOf(r,k)/max*100}%;background:${colorOf(k)}" data-tip="<b>${esc(r.name)}</b>${esc(labelOf(k))}: ${fmt(valOf(r,k))} of ${fmt(tot)}"></span>`).join("");
+  return `<div class="rowbar"><div class="lbl" title="${esc(r.name)}">${esc(tail(r.name))}</div><div class="track">${segs}</div><div class="num">${fmt(tot)}</div></div>`}).join("");
+}
+const G=D.groups.filter(g=>g.scripts>0).slice(0,25);
+const usedLangs=LANGS.filter(l=>G.some(g=>g.lang[l]));
+stacked($("#langBars"),$("#langLegend"),G,usedLangs,langColor,l=>l,(r,k)=>r.lang[k]);
+stacked($("#riskBars"),$("#riskLegend"),[...G].sort((a,b)=>(b.risk.DESTRUCTIVE||0)-(a.risk.DESTRUCTIVE||0)||b.scripts-a.scripts),RISKS.map(r=>r[0]),k=>RISKS.find(r=>r[0]===k)[2],k=>{const r=RISKS.find(r=>r[0]===k);return r[3]+" "+r[1]},(r,k)=>r.risk[k]);
+
+// overlap heatmap
+(()=>{const {labels,matrix}=D.overlap;if(!labels.length){$("#heat").innerHTML='<p class="muted">No files are shared between folders.</p>';return}
+ const max=Math.max(...matrix.flat().filter(v=>v!=null),1), step=v=>v?`var(--q${Math.max(1,Math.ceil(v/max*7))})`:"var(--surface-2)";
+ const short=s=>tail(s,34);
+ let h='<table><tr><th></th>'+labels.map(l=>`<th class="col" title="${esc(l)}">${esc(short(l))}</th>`).join("")+"</tr>";
+ matrix.forEach((row,i)=>{h+=`<tr><th class="rowh" title="${esc(labels[i])}">${esc(short(labels[i]))}</th>`+row.map((v,j)=>v==null?'<td style="background:var(--bg)"></td>':
+  `<td style="background:${step(v)};color:${v/max>.55?"#fff":"var(--text-primary)"}" data-tip="<b>${fmt(v)} identical files</b>${esc(labels[i])}<br>↔ ${esc(labels[j])}">${v||""}</td>`).join("")+"</tr>"});
+ $("#heat").innerHTML=h+"</table>"})();
+
+// duplicate families
+$("#dupSub").textContent=`${fmt(S.exact_duplicate_groups)} groups of byte-identical files. Sorted by space the extra copies take up. Hover a row for every location.`;
+(()=>{const F=D.families,max=Math.max(...F.map(f=>f.wasted),1);
+ $("#famTable").innerHTML="<tr><th>File</th><th>Copies</th><th>Folders</th><th>Redundant</th></tr>"+F.map(f=>
+ `<tr data-tip="<b>${esc(f.name)}</b>${f.paths.map(esc).join("<br>")}${f.copies>f.paths.length?"<br>…":""}"><td class="path">${esc(f.name)}</td><td class="n">${f.copies}</td><td class="n">${f.groups}</td>
+ <td style="min-width:120px"><div class="track"><span style="width:${Math.max(f.wasted/max*100,1)}%;background:var(--s1)"></span></div><span class="muted">${bytes(f.wasted)}</span></td></tr>`).join("")})();
+$("#variants").innerHTML=D.variants.length?'<div class="chips">'+D.variants.map(([n,c])=>`<button class="pill" data-q="${esc(n)}" data-tip="${c} different versions of <b>${esc(n)}</b>. Click to list them."><i style="background:var(--s2)"></i>${esc(n)} ×${c}</button>`).join("")+"</div>":'<p class="muted">None found.</p>';
+
+// stale
+function simpleBars(el,rows,color){const max=Math.max(...rows.map(r=>r[1]),1);el.innerHTML=rows.map(([k,v])=>`<div class="rowbar"><div class="lbl path" title="${esc(k)}">${esc(tail(k,48))}</div><div class="track"><span style="width:${v/max*100}%;background:${color}" data-tip="<b>${esc(k)}</b>${fmt(v)}"></span></div><div class="num">${fmt(v)}</div></div>`).join("")||'<p class="muted">None.</p>'}
+const KN={drive_O:"O: drive",drive_Z:"Z: drive",old_vault_version:"Old vault version (v0–v3)",lan_ip:"LAN IP address",unc_path:"UNC network path",abs_windows_path:"Any absolute Windows path (noisy)"};
+simpleBars($("#staleKinds"),Object.entries(D.stale_kinds).sort((a,b)=>b[1]-a[1]).map(([k,v])=>[KN[k]||k,v]),"var(--s2)");
+simpleBars($("#staleTargets"),D.stale_targets,"var(--s7)");
+simpleBars($("#staleFiles"),D.stale_top,"var(--s2)");
+
+// keywords
+(()=>{const K=D.keywords,max=Math.max(...K.map(k=>k[1]),1);$("#kwBars").innerHTML=K.map(([w,n])=>`<div class="rowbar" style="grid-template-columns:110px 1fr 40px;break-inside:avoid;cursor:pointer" data-q="${esc(w)}"><div class="lbl">${esc(w)}</div><div class="track"><span style="width:${n/max*100}%;background:var(--s3)" data-tip="<b>${esc(w)}</b>appears ${fmt(n)}× · click to filter"></span></div><div class="num">${n}</div></div>`).join("")})();
+
+// table
+const riskMeta=k=>RISKS.find(r=>r[0]===k)||["","?","var(--neutral)","?"];
+const fill=(sel,vals)=>vals.forEach(v=>sel.insertAdjacentHTML("beforeend",`<option>${esc(v)}</option>`));
+fill($("#fRisk"),RISKS.map(r=>r[0]).filter(r=>scr.some(s=>s.r===r)));fill($("#fLang"),[...new Set(scr.map(s=>s.l))].sort());fill($("#fDisp"),Object.keys(D.dispositions).sort());
+const COLS=[["p","Script"],["r","Risk"],["l","Lang"],["b","Size"],["d","Disposition"],["dr","Dry run"],["rc","Receipt"],["s","Stale"],["x","Copies"],["m","Modified"]];
+let sortKey="r",sortDir=-1,limit=200,view=[];
+const rank=r=>RISKS.findIndex(x=>x[0]===r);
+function apply(){const q=$("#q").value.toLowerCase(),fr=$("#fRisk").value,fl=$("#fLang").value,fd=$("#fDisp").value,ff=$("#fFlag").value;
+ view=scr.filter(s=>(!q||(s.p+" "+s.u).toLowerCase().includes(q))&&(!fr||s.r===fr)&&(!fl||s.l===fl)&&(!fd||s.d===fd)&&
+  (!ff||(ff==="stale"&&s.s>0)||(ff==="dup"&&s.x>1)||(ff==="sec"&&s.sec==="Y")||(ff==="nodry"&&s.r!=="READ-ONLY (heuristic)"&&s.dr==="N")));
+ view.sort((a,b)=>{let x=a[sortKey],y=b[sortKey];if(sortKey==="r"){x=rank(x);y=rank(y)}return (x>y?1:x<y?-1:0)*sortDir});
+ $("#allSub").textContent=`${fmt(view.length)} of ${fmt(scr.length)} scripts. Click a column to sort. Hover a path for its purpose.`;render()}
+function render(){const rows=view.slice(0,limit).map(s=>{const m=riskMeta(s.r);return `<tr><td class="path" data-tip="<b>${esc(s.p)}</b>${esc(s.u||"(no description found)")}<br><span class='muted'>${esc(s.ui)}${s.n==="Y"?" · uses network":""}${s.sec==="Y"?" · <b>possible secret</b>":""}</span>">${esc(s.p)}</td>
+ <td><span class="pill"><i style="background:${m[2]}"></i>${m[3]} ${esc(m[1])}</span></td><td>${esc(s.l)}</td><td class="n">${bytes(s.b)}</td><td>${esc(s.d)}</td><td>${s.dr}</td><td>${s.rc}</td><td class="n">${s.s||""}</td><td class="n">${s.x>1?s.x:""}</td><td>${s.m}</td></tr>`}).join("");
+ $("#tbl").innerHTML="<tr>"+COLS.map(([k,l])=>`<th data-k="${k}">${l}${k===sortKey?(sortDir>0?" ▲":" ▼"):""}</th>`).join("")+"</tr>"+rows;
+ $("#more").style.display=view.length>limit?"":"none"}
+$("#tbl").addEventListener("click",e=>{const th=e.target.closest("th");if(!th)return;const k=th.dataset.k;sortDir=k===sortKey?-sortDir:1;sortKey=k;apply()});
+["#q","#fRisk","#fLang","#fDisp","#fFlag"].forEach(id=>$(id).addEventListener("input",()=>{limit=200;apply()}));
+$("#more").onclick=()=>{limit+=300;render()};
+document.addEventListener("click",e=>{const t=e.target.closest("[data-q]");if(!t)return;$("#q").value=t.dataset.q;limit=200;apply();$("#all").scrollIntoView({behavior:"smooth"})});
+$("#csv").onclick=()=>{const keys=["p","g","l","b","r","d","dr","rc","n","s","x","m","u"],q=v=>'"'+String(v??"").replace(/"/g,'""')+'"';
+ const blob=new Blob([[keys.join(","),...view.map(s=>keys.map(k=>q(s[k])).join(","))].join("\n")],{type:"text/csv"});
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="inventory_view.csv";a.click()};
+apply();
+</script>
+</body>
+</html>
